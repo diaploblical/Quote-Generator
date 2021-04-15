@@ -10,20 +10,22 @@ class QuoteBox extends Component {
       quoteAuthor: undefined
     }
   }
-  async componentDidMount() {
+  quoteFetch = async () => {
     const api_call = await fetch('http://quotes.stormconsultancy.co.uk/random.json')
     const response = await api_call.json()
-    console.log(response)
     this.setState({
       quote: response.quote,
       quoteAuthor: response.author
     })
   }
+  componentDidMount() {
+    this.quoteFetch()
+  }
   render() {
     return(
-      <div className="container" id="centred-box">
+      <div className="container" id="quote-box">
         <div className="row">
-          <div>
+          <div className="text-center">
             <QuoteText quote={this.state.quote}/>
           </div>
         </div>
@@ -32,8 +34,8 @@ class QuoteBox extends Component {
             <QuoteText  quote={this.state.quoteAuthor}/>
           </div>
         </div>
-        <div>
-          <Buttons />
+        <div className="button-box">
+          <Buttons click={this.quoteFetch}/>
         </div>
       </div>
     )

@@ -17,8 +17,8 @@ class App extends Component {
       return Math.floor(Math.random() * (max - min + 1) + min);
     }
     let stateColorArrayId = colorSelector(0, (this.state.colors.length - 1))
-    const quoteBoxDiv = document.getElementById("centred-box")
-    quoteBoxDiv.querySelectorAll("#centred-box > h1 h2")
+    const quoteBoxDiv = document.getElementById("quote-box")
+    quoteBoxDiv.querySelectorAll("#quote-box > h1 h2")
     document.querySelector('body').style.backgroundColor = this.state.colors[stateColorArrayId]
     quoteBoxDiv.style.color = this.state.colors[stateColorArrayId]
   }
