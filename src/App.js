@@ -17,15 +17,16 @@ class App extends Component {
       return Math.floor(Math.random() * (max - min + 1) + min);
     }
     let stateColorArrayId = colorSelector(0, (this.state.colors.length - 1))
+    const docBody = document.querySelector('body')
     const quoteBoxDiv = document.getElementById("quote-box")
+    docBody.style.backgroundColor = this.state.colors[stateColorArrayId]
     quoteBoxDiv.querySelectorAll("#quote-box > h1 h2")
-    document.querySelector('body').style.backgroundColor = this.state.colors[stateColorArrayId]
     quoteBoxDiv.style.color = this.state.colors[stateColorArrayId]
   }
   render() {
     return(
       <div className="container">
-        <QuoteBox/>
+        <QuoteBox />
       </div>
     );
   } 

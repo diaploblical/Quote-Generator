@@ -31,11 +31,11 @@ class QuoteBox extends Component {
         </div>
         <div className="row">
           <div className="text-end">
-            <QuoteText  quote={this.state.quoteAuthor}/>
+            <QuoteText quote={this.state.quoteAuthor}/>
           </div>
         </div>
         <div className="button-box">
-          <Buttons click={this.quoteFetch}/>
+          <Buttons fetch={this.quoteFetch} url={"https://twitter.com/intent/tweet?text=\"" + this.state.quote + "\" - " + this.state.quoteAuthor} />
         </div>
       </div>
     )
