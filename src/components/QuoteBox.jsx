@@ -11,7 +11,7 @@ class QuoteBox extends Component {
     }
   }
   quoteFetch = async () => {
-    const api_call = await fetch('http://quotes.stormconsultancy.co.uk/random.json')
+    const api_call = await fetch('https://api.api-ninjas.com/v1/quotes?category=computers')
     const response = await api_call.json()
     this.setState({
       quote: response.quote,
