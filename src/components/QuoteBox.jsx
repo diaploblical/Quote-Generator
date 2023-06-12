@@ -11,10 +11,13 @@ class QuoteBox extends Component {
     }
   }
   quoteFetch = async () => {
-    const api_call = await fetch('https://api.api-ninjas.com/v1/quotes?category=computers')
+      const api_call = await fetch("https://api.api-ninjas.com/v1/quotes?category=computers", {
+          method: "GET",
+          headers: {"X-Api-Key": }
+      })
     const response = await api_call.json()
     this.setState({
-      quote: response.quote,
+      quote: response.content,
       quoteAuthor: response.author
     })
   }
