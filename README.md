@@ -1,1 +1,1 @@
-A little quote generator that pulls developer related quotes from http://quotes.stormconsultancy.co.uk/random.json
+A quote generator that pulls quotes from https://api.quotable.io/quotes/random
