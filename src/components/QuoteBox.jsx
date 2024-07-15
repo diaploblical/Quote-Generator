@@ -1,45 +1,43 @@
-import React, {Component} from 'react'
-import QuoteText from './QuoteText'
+import React, {useEffect, useState} from 'react'
 import Buttons from './Buttons'
 
-class QuoteBox extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      quote: undefined,
-      quoteAuthor: undefined
-    }
+const QuoteBox = (props) => {
+  const [quote, setQuote] = useState("")
+  const [quoteAuthor, setQuoteAuthor] = useState("")
+
+  const apiUrl = "https://api.quotable.io/quotes/random"
+
+  useEffect (() => {  
+    quoteFetcher(apiUrl)
+    console.log(quoteAuthor)
+  }, [])
+
+  const quoteFetcher = async (apiUrl) => {
+    const apiCall = await fetch(apiUrl)
+    const response = await apiCall.json()
+    setQuote(response[0].content)
+    setQuoteAuthor(response[0].author)
+    
   }
-  quoteFetch = async () => {
-      const api_call = await fetch("https://api.quotable.io/quotes/random")
-    const response = await api_call.json()
-    this.setState({
-      quote: response.content,
-      quoteAuthor: response.author
-    })
-  }
-  componentDidMount() {
-    this.quoteFetch()
-  }
-  render() {
-    return(
-      <div className="container" id="quote-box">
-        <div className="row">
-          <div className="text-center">
-            <QuoteText quote={this.state.quote}/>
-          </div>
-        </div>
-        <div className="row">
-          <div className="text-end">
-            <QuoteText quote={this.state.quoteAuthor}/>
-          </div>
-        </div>
-        <div className="button-box">
-          <Buttons fetch={this.quoteFetch} url={"https://twitter.com/intent/tweet?text=\"" + this.state.quote + "\" - " + this.state.quoteAuthor} />
+
+
+  return(
+    <div className="container" id="quote-box">
+      <div className="row">
+        <div className="text-center">
+          <h1>{quote}</h1>
         </div>
       </div>
-    )
-  }
+      <div className="row">
+        <div className="text-end">
+          <h1>{quoteAuthor}</h1>
+        </div>
+      </div>
+      <div className="button-box">
+        <Buttons fetcher={() => quoteFetcher(apiUrl)} url={"https://twitter.com/intent/tweet?text=\"" + quote + "\" - " + quoteAuthor} colour={props.colour} />
+      </div>
+    </div>
+  )
 }
 
 export default QuoteBox
