@@ -1,19 +1,15 @@
-import React, {useLayoutEffect} from 'react'
+import React, { useContext } from 'react'
+import { ColorContext } from '../App'
 import twitterLogo from '../assets/images/twitter-logo.svg'
+import twitterLogoBlack from '../assets/images/twitter-logo-black.svg'
 
 const Buttons = (props) => {
-  useLayoutEffect(() => {
-    let colour = document.querySelector("body").style.backgroundColor
-    const buttons = document.querySelectorAll(".custom-btn")
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].style.backgroundColor = colour
-    }
-  })
+  const color = useContext(ColorContext);
   return(
     <div className="row">
       <div className="col-md-1">
         <a href={props.url} className="custom-btn" >
-          <img id="twitter-logo" src={twitterLogo} width="20px" alt="Twitter Logo" />
+          <img id="twitter-logo" src={color == "white" ? twitterLogo : twitterLogoBlack} width="20px" alt="Twitter Logo" />
         </a>
       </div>
       <div className="col-md-11">

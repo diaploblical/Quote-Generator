@@ -1,9 +1,20 @@
+:root {
+  --main-bg-color: white;
+  --quote-box-bg-color: white;
+  --button-text-color: white;
+}
+
+html {
+  background-color: var(--main-bg-color);
+}
+
 #quote-box {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: var(--quote-box-bg-color);
+  color: var(--main-bg-color);
   padding: 50px;
 }
 
@@ -17,6 +28,7 @@ body {
 
 #quote-box {
   width: 50%;
+  border-radius: 2rem;
 }
 
 #twitter-logo {
@@ -27,7 +39,7 @@ body {
   display: inline-block;
   font-weight: 400;
   line-height: 1.5;
-  color: #ffffff;
+  color: var(--button-text-color);
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
@@ -35,10 +47,10 @@ body {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-  background-color: transparent;
+  background-color: var(--main-bg-color);
   border: 1px solid transparent;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  /* transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; */
 }
