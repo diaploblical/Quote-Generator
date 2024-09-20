@@ -1,8 +1,8 @@
 import React, { useState, useEffect, createContext } from 'react';
 import './App.css';
 import './bootstrap/css/bootstrap.min.css';
-import { colorSetter } from './components/functions';
-import { hexToRgb } from './components/functions';
+import { colorSetter } from './functions';
+import { hexToRgb } from './functions';
 import QuoteBox from './components/QuoteBox'
 
 export const ColorContext = createContext();
@@ -12,13 +12,13 @@ const App = () => {
   const hex = colorSetter();
   const rgbArray = hexToRgb(hex);
   useEffect(() => {
-    if (rgbArray[0]*0.299 + rgbArray[1]*0.587 + rgbArray[2]*0.114 > 186) {
+    if ((rgbArray[0]*0.2126)/255 + (rgbArray[1]*0.7152)/255 + (rgbArray[2]*0.722)/255 > 0.5) {
       document.documentElement.style.setProperty('--quote-box-bg-color', "black");
-      document.documentElement.style.setProperty('--button-text-color', "black");
+      document.documentElement.style.setProperty('--quote-box-text-color', "white");
       setColor("black");
     } else {
       document.documentElement.style.setProperty('--quote-box-bg-color', "white");
-      document.documentElement.style.setProperty('--button-text-color', "white");
+      document.documentElement.style.setProperty('--quote-box-text-color', "black");
       setColor("white");
     }
   }, [color])

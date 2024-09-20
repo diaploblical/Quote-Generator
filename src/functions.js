@@ -1,5 +1,5 @@
 export const colorSetter = () => {
-    const randomColor = "#"+((1<<24)*Math.random()|0).toString(16);
+    const randomColor = "#"+((1<<24)*Math.random()|0).toString(16).slice(-6);
     document.documentElement.style.setProperty('--main-bg-color', randomColor);
     return randomColor;
 }
